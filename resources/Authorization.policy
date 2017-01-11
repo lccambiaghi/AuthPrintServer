@@ -1,0 +1,34 @@
+
+grant codebase "file:/Users/lucacambiaghi/IdeaProjects/AuthPrintServer/target/classes/server/*" {
+   permission java.security.AllPermission;
+};
+
+grant codebase "file:/Users/lucacambiaghi/IdeaProjects/AuthPrintServer/target/classes/permissionvalidation/MethodCallAction.class",
+        Principal login.AdminPrincipal "*" {
+   permission permissions.CustomPermission "*";
+};
+
+grant codebase "file:/Users/lucacambiaghi/IdeaProjects/AuthPrintServer/target/classes/permissionvalidation/MethodCallAction.class",
+        Principal login.TechPrincipal "*" {
+    permission permissions.CustomPermission "print";
+    permission permissions.CustomPermission "start";
+    permission permissions.CustomPermission "stop";
+    permission permissions.CustomPermission "restart";
+    permission permissions.CustomPermission "status";
+    permission permissions.CustomPermission "readConfig";
+    permission permissions.CustomPermission "setConfig";
+};
+
+grant codebase "file:/Users/lucacambiaghi/IdeaProjects/AuthPrintServer/src/main/java/permissionvalidation/MethodCallAction.java",
+        Principal login.SuperPrincipal "*" {
+  permission permissions.CustomPermission "print";
+  permission permissions.CustomPermission "queue";
+  permission permissions.CustomPermission "topQueue";
+  permission permissions.CustomPermission "restart";
+};
+
+grant codebase "file:/Users/lucacambiaghi/IdeaProjects/AuthPrintServer/src/main/java/permissionvalidation/MethodCallAction.java",
+        Principal login.UserPrincipal "*" {
+  permission permissions.CustomPermission "print";
+  permission permissions.CustomPermission "queue";
+};
